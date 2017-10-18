@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>闭包演示</title>
+    <style type="text/css">
+        p {
+            background: gold;
+        }
+    </style>
+
+</head>
+<body onLoad="init()">
+
+<p>第0个p标签</p>
+<p>第1个p标签</p>
+<p>第2个p标签</p>
+<p>第3个p标签</p>
+
+<script type="text/javascript">
+    function init() {
+        var pElements = document.getElementsByTagName("p");
+        console.log(pElements.length)
+        for (var i = 0; i < pElements.length; i++) {
+            pElements[i].onclick = function () {
+                // 此处不能正确循环元素
+                // 始终弹出："点击了第 4 个p标签"
+                // 原因：调用onclick函数时候，外层循环结束已经结束了，i值结束为4跳出。
+                // 换句话说，只要我们能把这个i值动态传到onclick函数里就可以了。
+                // for_success.html，采用闭包写法改进。
+                alert('点击了第 ' + i + ' 个p标签');
+            }
+        }
+    }
+</script>
+</body>
+</html>

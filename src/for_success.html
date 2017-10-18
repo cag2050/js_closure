@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>闭包演示</title>
+    <style type="text/css">
+        p {
+            background: gold;
+        }
+    </style>
+
+</head>
+<body onLoad="init()">
+
+<p>第0个p标签</p>
+<p>第1个p标签</p>
+<p>第2个p标签</p>
+<p>第3个p标签</p>
+
+<script type="text/javascript">
+    function init() {
+        var pElements = document.getElementsByTagName("p");
+
+        for (var i = 0; i < pElements.length; i++) { // for循环是立即执行，for循环内的事件不立即执行
+
+            pElements[i].onclick = function (args) { // args为形参
+                // 把与args相关的操作必须写在闭包return function（）{}之内才能正常执行
+                // 闭包就是能够读取外层函数变量的内层函数
+                // 此处，闭包读取了外层函数变量args
+                return function () {
+                    alert('点击了第 ' + args + ' 个p标签');
+                }
+            }(i); // i为实参(把i传进去，使事件内部立即执行)
+        }
+    }
+</script>
+</body>
+</html>
