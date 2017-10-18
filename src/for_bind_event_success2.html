@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>闭包演示</title>
+    <style type="text/css">
+        p {
+            background: gold;
+        }
+    </style>
+
+</head>
+<body onLoad="init()">
+
+<p>第0个p标签</p>
+<p>第1个p标签</p>
+<p>第2个p标签</p>
+<p>第3个p标签</p>
+
+<script type="text/javascript">
+    function init() {
+        var pElements = document.getElementsByTagName("p");
+        for (var i = 0; i < pElements.length; i++) {
+            pElements[i].no = i; // 将当前的i只保存在一个数组中，这样就能在事件中获取准确的索引值。
+            pElements[i].onclick = function () {
+                alert('点击了第 ' + this.no + ' 个p标签');
+            };
+        }
+    }
+</script>
+</body>
+</html>

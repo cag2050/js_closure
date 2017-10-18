@@ -20,9 +20,7 @@
 <script type="text/javascript">
     function init() {
         var pElements = document.getElementsByTagName("p");
-
         for (var i = 0; i < pElements.length; i++) { // for循环是立即执行，for循环内的事件不立即执行
-
             pElements[i].onclick = function (args) { // args为形参
                 // 把与args相关的操作必须写在闭包return function（）{}之内才能正常执行
                 // 闭包就是能够读取外层函数变量的内层函数
